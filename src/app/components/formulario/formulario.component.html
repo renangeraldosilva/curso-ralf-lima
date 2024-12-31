@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="formularioAluno">
+    <div class="mb-3 col-12">
+      <label class="form-label">Nome completo</label>
+      <input class="form-control" formControlName="nome">
+      <div *ngIf="formularioAluno.get('nome')?.invalid && formularioAluno.get('nome')?.touched">
+        <small *ngIf="formularioAluno.get('nome')?.errors?.['required']">
+          O nome é obrigatório.
+        </small>
+        <small *ngIf="formularioAluno.get('nome')?.errors?.['pattern']">
+          Apenas letras são permitidas. Não use números ou caracteres especiais.
+        </small>
+      </div>
+
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nota 1</label>
+      <input class="form-control" formControlName="nota1">
+      <div *ngIf="formularioAluno.get('nota1')?.invalid && formularioAluno.get('nota1')?.touched">
+        <small *ngIf="formularioAluno.get('nota1')?.errors?.['required']">
+          O campo Nota 2 é obrigatório.
+       </small>
+       <small *ngIf="formularioAluno.get('nota1')?.errors?.['pattern']">
+         Insira uma nota válida (0 a 10) com no máximo duas casas decimais, virgula não é permitida.
+       </small>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nota 2</label>
+      <input class="form-control" formControlName="nota2">
+      <div *ngIf="formularioAluno.get('nota2')?.invalid && formularioAluno.get('nota2')?.touched">
+        <small *ngIf="formularioAluno.get('nota2')?.errors?.['required']">
+           O campo Nota 2 é obrigatório.
+        </small>
+        <small *ngIf="formularioAluno.get('nota2')?.errors?.['pattern']">
+          Insira uma nota válida (0 a 10) com no máximo duas casas decimais, virgula não é permitida.
+        </small>
+      </div>
+    </div>
+
+    <div class="botoes">
+      <button class="btn btn-outline-primary mr" [disabled]="formularioAluno.invalid" (click)="salvar()">Salvar</button>
+      <button class="btn btn-outline-secondary" (click)="voltar()">Voltar</button>
+    </div>
+  </form>
+</div>

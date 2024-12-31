@@ -1,0 +1,42 @@
+@if (!exibirTabela) {
+  <app-formulario
+    (voltarTabela)="voltarTabela()"
+    (adicionarAluno)="addAluno($event)"
+    (atualizarAluno)="atualizarAluno($event)"
+    [aluno]="aluno"
+  ></app-formulario>
+} @else {
+  <div class="container">
+
+    <h1>Tabela de alunos</h1>
+
+    <div class="btn-adicionar">
+      <button class="btn btn-outline-primary" (click)="exibirFormulario()">Adicionar aluno</button>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Nota 1</th>
+          <th scope="col">Nota 2</th>
+          <th scope="col">Média</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let aluno of alunos">
+        <tr>
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.nota1 }}</td>
+          <td>{{ aluno.nota2 }}</td>
+          <td>{{ aluno.nota1 | media: aluno.nota2 }}</td>
+          <td>
+            <button class="btn btn-outline-warning mr" (click)="abrirFormulario(aluno)" >Editar</button>
+            <button class="btn btn-outline-danger" (click)="apagar(aluno)">Apagar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+}
+

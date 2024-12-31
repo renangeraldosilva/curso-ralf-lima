@@ -1,0 +1,16 @@
+.container {
+  justify-content: center;
+  max-width: 900px;
+  margin-top: 40px;
+
+}
+
+.btn-adicionar {
+  display: flex;
+  justify-content: end;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
